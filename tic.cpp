@@ -43,13 +43,20 @@ void gameBoard(void)
 
 void drawPlayer(void) 
 {
-     if (player == false)
-     {
-         //draw an x and translate it to x, y
+    if (player == false)
+    {
+        glutSolidCube ( 1, 1, 1);
+        glRotatef (45.0, 0, 0);
+        glTranslatef ( x, y, 0);
+        glutSolidCube ( 1, 1, 1);
+        glRotatef (-45.0, 0, 0);
+        glTranslatef ( x, y, 0);
      }
      else if (player == true)
      {
-          //draw a torus and translate to x, y
+         //draw a torus and translate to x, y
+         glutSolidTorus (0.275, 0.85, 8, 15);
+         glTranslatef ( x, y, 0.0);
      }
 }
 
@@ -61,43 +68,44 @@ void display(void)
     glFlush ();
 }
 
-void keyboard (unsigned char key, int x, int y)
+void keyboard (unsigned char key)
 {
-   switch (key) {
-      case '7':
-         if (seven == false)
-         {  
-            x = 100;
-            y = 500;
-            player = !player;
-            seven = true;
-            glutPostRedisplay();
+    switch (key) 
+    {
+        case '7':
+            if (seven == false)
+            {  
+                x = 100;
+                y = 500;
+                player = !player;
+                seven = true;
+                glutPostRedisplay();
+                break;
+            }
+            else if (seven == true)
+            {
+                break;
+            } 
+        case 27:
+            exit(0);
             break;
-         }
-         else if (seven == true)
-         {
-              break;
-         } 
-      case 27:
-         exit(0);
-         break;
-      default:
-         break;
-   }
+        default:
+            break;
+    }
 }
 
 int main(int argc, char** argv)
 {
-   glutInit(&argc, argv);
-   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
-   glutInitWindowSize (600, 600); 
-   glutInitWindowPosition (100, 100);
-   glutCreateWindow ("3D Tic Tac Toe");
-   init ();
-   glutDisplayFunc(display);
-   glutKeyboardFunc(keyboard);
-   glutMainLoop();
-   return 0;
+    glutInit(&argc, argv);
+    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize (600, 600); 
+    glutInitWindowPosition (100, 100);
+    glutCreateWindow ("3D Tic Tac Toe");
+    init ();
+    glutDisplayFunc(display);
+    glutKeyboardFunc(keyboard);
+    glutMainLoop();
+    return 0;
 }
     
 //bushido_blade@hailmail.net
