@@ -20,48 +20,50 @@ static GLfloat y = 0;
 void init(void)
 {
     glColorClear (1.0, 1.0, 1.0, 0.0);
-    glShadeModel(GL_SMOOTH);
+    glShadeModel (GL_SMOOTH);
 }
 
 void gameBoard()
 {
-    glBegin (GL_LINES);
-        glColor3f(0.0, 0.0, 0.0);
-        glVertex2f(200.0f, 200.0f);
-        glColor3f(0.0, 0.0, 0.0);
-        glVertex2f(400.0f, 200.0f);
-        glColor3f(0.0, 0.0, 0.0);
-        glVertex2f(200.0f, 300.0f);
-        glColor3f(0.0, 0.0, 0.0);
-        glVertex2f(400.0f, 300.0f);
-        glVertex2f(275.0f, 100.0f);
-        glVertex2f(275.0f, 400.0f);
-        glVertex2f(325.0f, 400.0f);
-    glEnd();
+    glColor3f (0.0, 0.0, 0.0);
+    
+    glTranslatef (100, 200, 0);
+    glScalef (400, 2, 2);
+    glutSolidCube (1.0);
+    
+    glTranslatef (100, 400, 0);
+    glScalef (400, 2, 2);
+    glutSolidCube (1.0);
+    
+    glTranslatef (250, 100, 0);
+    glScalef (2, 400, 2);
+    glutSolidCube (1.0);
+    
+    glTranslatef (450, 100, 0);
+    glScalef (2, 400, 2);
+    glutSolidCube (1.0);
 }
 
-void drawPlayer(GLfloat x, Glfloat y) 
+void drawPlayer(GLfloat x, GLfloat y) 
 {
     if (player == false)
     {
-        glPushMatrix();
-        glTranslatef ( x, y, 0);
+        glColor3f (1.0, 0.0, 0.0);
+        glTranslatef ((GLfloat) x,(GLfloat) y, 0);
+        glScalef (4, 2, 1);
         glRotatef (45.0, 0, 1, 0);
-        glutSolidCube ( 1, 1, 1);
-        glPopMatrix();
-        
-        glPushMatrix();    
-        glTranslatef ( x, y, 0);
+        glutSolidCube ( 1.0);
+           
+        glColor3f (0.0, 0.0, 1.0);
+        glTranslatef ((GLfloat) x,(GLfloat) y, 0);
+        glScalef (4, 2, 1);
         glRotatef (-45.0, 0, 1, 0);
-        glutSolidCube ( 1, 1, 1);
-        glPopMatrix();
+        glutSolidCube ( 1.0);
      }
      else if (player == true)
      {
-        glPushMatrix();
-        glTranslatef ( x, y, 0);
+        glTranslatef ((GLfloat) x,(GLfloat) y, 0);
         glutSolidTorus (0.275, 0.85, 8, 15);
-        glPopMatrix();
      }
 }
 
@@ -79,8 +81,7 @@ void keyboard (unsigned char key, int x, int y)
         case '7':
             if (seven == false)
             {  
-                x = 100;
-                y = 500;
+                drawPlayer(100.0, 500.0);
                 player = !player;
                 seven = true;
                 glutPostRedisplay();
@@ -110,6 +111,5 @@ int main(int argc, char** argv)
     glutKeyboardFunc(keyboard);
     glutMainLoop();
     return 0;
-}
-    
+}  
 //bushido_blade@hailmail.net
