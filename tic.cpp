@@ -1,8 +1,8 @@
+#include <GL/GL.h>
+#include <GL/GLU.h>
+#include <GL/glut.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/glut.h>
 
 static bool player = false;
 static bool one = false;
@@ -14,18 +14,17 @@ static bool six = false;
 static bool seven = false;
 static bool eight = false;
 static bool nine = false;
-static float x = 0;
-static float y = 0;
+static GLfloat x = 0;
+static GLfloat y = 0;
 
 void init(void)
 {
-    glClearColor (1.0, 1.0, 1.0, 0.0);
-    glShadeModel (GL_FLAT);
+    glColorClear (1.0, 1.0, 1.0, 0.0);
+    glShadeModel(GL_SMOOTH);
 }
 
-void gameBoard(void)
+void gameBoard()
 {
-    //glColor3f(1.0, 1.0, 1.0);
     glBegin (GL_LINES);
         glColor3f(0.0, 0.0, 0.0);
         glVertex2f(200.0f, 200.0f);
@@ -41,22 +40,28 @@ void gameBoard(void)
     glEnd();
 }
 
-void drawPlayer(void) 
+void drawPlayer(GLfloat x, Glfloat y) 
 {
     if (player == false)
     {
-        glutSolidCube ( 1, 1, 1);
-        glRotatef (45.0, 0, 0);
+        glPushMatrix();
         glTranslatef ( x, y, 0);
+        glRotatef (45.0, 0, 1, 0);
         glutSolidCube ( 1, 1, 1);
-        glRotatef (-45.0, 0, 0);
+        glPopMatrix();
+        
+        glPushMatrix();    
         glTranslatef ( x, y, 0);
+        glRotatef (-45.0, 0, 1, 0);
+        glutSolidCube ( 1, 1, 1);
+        glPopMatrix();
      }
      else if (player == true)
      {
-         //draw a torus and translate to x, y
-         glutSolidTorus (0.275, 0.85, 8, 15);
-         glTranslatef ( x, y, 0.0);
+        glPushMatrix();
+        glTranslatef ( x, y, 0);
+        glutSolidTorus (0.275, 0.85, 8, 15);
+        glPopMatrix();
      }
 }
 
@@ -64,11 +69,10 @@ void display(void)
 {
     glClear (GL_COLOR_BUFFER_BIT);
     gameBoard ();
-    drawPlayer ();
     glFlush ();
 }
 
-void keyboard (unsigned char key)
+void keyboard (unsigned char key, int x, int y)
 {
     switch (key) 
     {
