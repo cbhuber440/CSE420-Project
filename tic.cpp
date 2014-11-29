@@ -50,13 +50,13 @@ void drawPlayer(GLfloat x, GLfloat y)
     {
         glColor3f (1.0, 0.0, 0.0);
         glTranslatef ((GLfloat) x,(GLfloat) y, 0);
-        glScalef (4, 2, 1);
+        glScalef (10, 2, 2);
         glRotatef (45.0, 0, 1, 0);
         glutSolidCube ( 1.0);
            
         glColor3f (0.0, 0.0, 1.0);
         glTranslatef ((GLfloat) x,(GLfloat) y, 0);
-        glScalef (4, 2, 1);
+        glScalef (10, 2, 2);
         glRotatef (-45.0, 0, 1, 0);
         glutSolidCube ( 1.0);
      }
@@ -78,6 +78,84 @@ void keyboard (unsigned char key, int x, int y)
 {
     switch (key) 
     {
+        case '1':
+             if (one == false)
+             {
+                 drawPlayer(100.0, 500.0);
+                 player = !player;
+                 one = true;
+                 glutPostRedisplay();
+                 break;
+             }
+             else if (one == true)
+             {
+                  break;
+             }
+        case '2':
+            if (two == false)
+            {  
+                drawPlayer(100.0, 500.0);
+                player = !player;
+                two = true;
+                glutPostRedisplay();
+                break;
+            }
+            else if (two == true)
+            {
+                break;
+            } 
+         case '3':
+            if (three == false)
+            {  
+                drawPlayer(100.0, 500.0);
+                player = !player;
+                three = true;
+                glutPostRedisplay();
+                break;
+            }
+            else if (three == true)
+            {
+                break;
+            }   
+         case '4':
+            if (four == false)
+            {  
+                drawPlayer(100.0, 500.0);
+                player = !player;
+                four = true;
+                glutPostRedisplay();
+                break;
+            }
+            else if (four == true)
+            {
+                break;
+            } 
+         case '5':
+            if (five == false)
+            {  
+                drawPlayer(100.0, 500.0);
+                player = !player;
+                five = true;
+                glutPostRedisplay();
+                break;
+            }
+            else if (five == true)
+            {
+                break;
+            } 
+            case '6':
+            if (six == false)
+            {  
+                drawPlayer(100.0, 500.0);
+                player = !player;
+                six = true;
+                glutPostRedisplay();
+                break;
+            }
+            else if (six == true)
+            {
+                break;
+            } 
         case '7':
             if (seven == false)
             {  
@@ -88,6 +166,32 @@ void keyboard (unsigned char key, int x, int y)
                 break;
             }
             else if (seven == true)
+            {
+                break;
+            } 
+        case '8':
+            if (eight == false)
+            {  
+                drawPlayer(100.0, 500.0);
+                player = !player;
+                eight = true;
+                glutPostRedisplay();
+                break;
+            }
+            else if (eight == true)
+            {
+                break;
+            } 
+        case '9':
+            if (nine == false)
+            {  
+                drawPlayer(100.0, 500.0);
+                player = !player;
+                nine = true;
+                glutPostRedisplay();
+                break;
+            }
+            else if (nine == true)
             {
                 break;
             } 
