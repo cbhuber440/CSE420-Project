@@ -135,7 +135,9 @@ void keyboard (unsigned char key, int x, int y)
 {
      if (player == false && AI == true)
      {
-        case '1':
+        switch (key)
+        {
+               case '1':
                if (one == false)
                {
                  drawPlayer(100.0,500.0);
@@ -257,6 +259,7 @@ void keyboard (unsigned char key, int x, int y)
                break;
                default:
                break;
+        }
      }
      else if (player = false && AI == false)
      {
