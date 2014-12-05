@@ -297,7 +297,7 @@ void display(void)
 {
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    gluLookAt(0.0, 2.0, -2.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+    //gluLookAt(0.0, 2.0, -2.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
     glEnable(GL_LIGHT0);
     gameBoard();
     drawPlayer();
@@ -433,6 +433,7 @@ void keyboard (unsigned char key, int x, int y)
             case '1':
                 //if (one == false)
                 //{
+                	//glTranslatef (-2, -2, 0);
                     player = !player;
                     one = true;
                     glutPostRedisplay();
@@ -445,7 +446,6 @@ void keyboard (unsigned char key, int x, int y)
             case '2':
                 if (two == false)
                 {
-                    glTranslatef (-2, -2, 0);
                     player = !player;
                     two = true;
                     glutPostRedisplay();
